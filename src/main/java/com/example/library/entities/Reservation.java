@@ -11,10 +11,12 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "reservation")
-    private List<Book> bookList;
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 
-    @OneToMany(mappedBy = "reservation")
-    private List<Person> personList;
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
 
 }

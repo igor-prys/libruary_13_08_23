@@ -1,9 +1,17 @@
 package com.example.library.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "books")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +29,11 @@ public class Book {
     @Column(name="country")
     private String country;
 
+    @Column(name="countofbooks")
     private int countOfBooks;
 
-    @ManyToOne
-    @JoinColumn(name="reservation_id")
-    private Reservation reservation;
+//    @OneToMany(mappedBy = "book")
+//    private List<Reservation>reservations;
 
 
 
