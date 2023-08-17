@@ -3,7 +3,6 @@ package com.example.library.controllers;
 import com.example.library.Services.BookService;
 import com.example.library.entities.Book;
 import com.example.library.exception.NoSuchBookException;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +45,10 @@ public class BookController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
+        Book book=bookService.findOne(id);
+        if(book==null){
+            throw new NoSuchBookException("There is no book with ID= "+id+" in Database");
+        }
         bookService.delete(id);
     }
 }
