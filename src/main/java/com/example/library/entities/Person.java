@@ -22,8 +22,8 @@ public class Person {
 
     private String surname;
 
-    @OneToMany(mappedBy = "person")
-    private List<Reservation> reservations;
+//    @OneToMany(mappedBy = "person")
+//    private List<Reservation> reservations;
 
 
 }
