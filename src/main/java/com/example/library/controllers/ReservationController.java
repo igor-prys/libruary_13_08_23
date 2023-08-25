@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/reservations")
@@ -17,42 +18,42 @@ public class ReservationController {
     private ReservationService service;
 
     @Autowired
-    public ReservationController (ReservationService service){
-        this.service=service;
+    public ReservationController(ReservationService service) {
+        this.service = service;
     }
 
     @GetMapping("/{id}")
-    public Reservation getOne(@PathVariable (name = "id") Long id  ){
+    public Reservation getOne(@PathVariable(name = "id") Long id) {
         return service.getOne(id);
     }
 
     @GetMapping
-    public List<Reservation>getAll(){
+    public List<Reservation> getAll() {
         return service.getAll();
     }
 
     @PostMapping
-    public Reservation save(@RequestBody Reservation reservation){
+    public Reservation save(@RequestBody Reservation reservation) {
+        if()
         return service.save(reservation);
     }
 
     @PutMapping
-    public Reservation update(@RequestBody Reservation reservation){
-       return service.update(reservation);
+    public Reservation update(@RequestBody Reservation reservation) {
+        return service.update(reservation);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) {
         service.delete(id);
     }
 
-    @GetMapping("/books/{id}/cont")
-    public ResponseEntity<Integer>getCountById(@PathVariable Long id){
-        Integer count=service.countById(id);
-        if(count==0){
+    @GetMapping("/books/{id}/count")
+    public ResponseEntity<Map<String, Integer>> getCountById(@PathVariable Long id) {
+        Integer count = service.countById(id);
+        if (count == 0) {
             return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(count);
+        return ResponseEntity.ok(Collections.singletonMap("count", count));
     }
-
 }

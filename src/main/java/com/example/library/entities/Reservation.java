@@ -1,10 +1,12 @@
 package com.example.library.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
+@Data
 public class Reservation {
 
     @Id
