@@ -3,8 +3,11 @@ package com.example.library.controllers;
 import com.example.library.Services.ReservationService;
 import com.example.library.entities.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -44,6 +47,12 @@ public class ReservationController {
     }
 
     @GetMapping("/books/{id}/cont")
-    public int
+    public ResponseEntity<Integer>getCountById(@PathVariable Long id){
+        Integer count=service.countById(id);
+        if(count==0){
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(count);
+    }
 
 }

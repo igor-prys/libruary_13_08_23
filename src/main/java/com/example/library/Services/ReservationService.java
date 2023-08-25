@@ -36,4 +36,8 @@ public class ReservationService {
     public void delete(Long id){
         repository.deleteById(id);
     }
+
+    public int countById(Long id){
+        return repository.countById(id);
+    }
 }
