@@ -3,8 +3,6 @@ package com.example.library.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
-
 @Entity
 @Data
 public class Reservation {
@@ -21,4 +19,6 @@ public class Reservation {
     @JoinColumn(name = "person_id")
     private Person person;
 
+    @Column(name = "description")
+    private String description;
 }

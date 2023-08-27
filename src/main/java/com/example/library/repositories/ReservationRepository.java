@@ -12,6 +12,6 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long> {
     @Query("select count(r) from Reservation r where r.book.id=:book_id")
     int countById(@Param("book_id")Long bookId);
 
-    @Query("from Reservation r  join fetch  r.book join fetch  r.person")
-    List<Reservation> getAll();
+//    @Query("from Reservation r  join fetch  r.book join fetch  r.person")
+//    List<Reservation> getAll();
 }

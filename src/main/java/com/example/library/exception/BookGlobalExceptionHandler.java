@@ -14,4 +14,10 @@ public class BookGlobalExceptionHandler {
         IncorrectDataException dataException=new IncorrectDataException(exception.getMessage());
         return new ResponseEntity<>(dataException, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler
+    public ResponseEntity<IncorrectDataException>outOfBook(OutOfBooKException exception){
+        IncorrectDataException data=new IncorrectDataException(exception.getMessage());
+        return new ResponseEntity<>(data,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
