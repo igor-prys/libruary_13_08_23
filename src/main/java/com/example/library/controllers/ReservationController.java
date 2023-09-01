@@ -67,4 +67,9 @@ public class ReservationController {
         }
         return ResponseEntity.ok(Collections.singletonMap("count", count));
     }
+
+    @GetMapping("/expired")
+    public List<Reservation>findOldReservations(){
+        return reservationService.findOldReservations();
+    }
 }

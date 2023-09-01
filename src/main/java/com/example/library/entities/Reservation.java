@@ -3,6 +3,9 @@ package com.example.library.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Entity
 @Data
 public class Reservation {
@@ -21,4 +24,7 @@ public class Reservation {
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "registration_Date")
+    private Long registrationDate;
 }

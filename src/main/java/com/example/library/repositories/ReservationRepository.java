@@ -14,4 +14,7 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long> {
 
 //    @Query("from Reservation r  join fetch  r.book join fetch  r.person")
 //    List<Reservation> getAll();
+
+    @Query("from Reservation r where r.registrationDate<:comparingDate")
+    List<Reservation>findOldReservations(@Param("comparingDate") Long comparingDate);
 }
