@@ -2,7 +2,9 @@ package com.example.library.controllers;
 
 import com.example.library.Services.BookService;
 import com.example.library.Services.ReservationService;
+import com.example.library.dto.ReservationDto;
 import com.example.library.entities.Book;
+import com.example.library.entities.Person;
 import com.example.library.entities.Reservation;
 import com.example.library.exception.NoSuchBookException;
 import com.example.library.exception.OutOfBooKException;
@@ -26,8 +28,17 @@ public class ReservationController {
     }
 
     @GetMapping("/{id}")
-    public Reservation getOne(@PathVariable(name = "id") Long id) {
-        return reservationService.getOne(id);
+    public ReservationDto getOne(@PathVariable(name = "id") Long id) {
+        Reservation reservation=reservationService.getOne(id);
+        Book book=reservation.getBook();
+        Person person=reservation.getPerson();
+        ReservationDto reservationDto=new ReservationDto();
+        reservationDto.setBookAuthor(book.getAuthor());
+        reservationDto.setBookName(book.getAuthor());
+        reservationDto.setPersonFullName(person.getName()+" "+person.getSurname());
+        reservationDto.setDescription(reservation.getDescription());
+        reservationDto.setRegistrationDate(reservationDto.getRegistrationDate());
+        return reservationDto;
     }
 
     @GetMapping

@@ -1,6 +1,7 @@
 package com.example.library.controllers;
 
 import com.example.library.Services.BookService;
+import com.example.library.dto.BookDto;
 import com.example.library.entities.Book;
 import com.example.library.exception.NoSuchBookException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,13 @@ public class BookController {
     }
 
     @PostMapping
-    public Book save(@RequestBody Book book){
+    public Book save(@RequestBody BookDto bookDto){
+        Book book=new Book();
+        book.setName(bookDto.getName());
+        book.setAuthor(bookDto.getAuthor());
+        book.setLanguage(bookDto.getLanguage());
+        book.setCountOfBooks(bookDto.getCountOfBooks());
+        book.setCountry(bookDto.getCountry());
       return   bookService.save(book);
     }
 
